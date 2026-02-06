@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hayal'e Özel Sürpriz 🎁</title>
+  <title>Hayal'e Küçük Bir Sürpriz ✨</title>
 
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: "Segoe UI", Tahoma, sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -19,23 +19,29 @@
     }
 
     .container {
-      background: #fff;
+      background: #ffffff;
       width: 90%;
-      max-width: 500px;
+      max-width: 520px;
       padding: 25px;
       border-radius: 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
 
     h1 {
-      color: #ff5f7e;
-      margin-bottom: 10px;
+      color: #4a6cf7;
+      margin-bottom: 8px;
     }
 
     .date {
       font-size: 14px;
       opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    .countdown {
+      font-size: 13px;
+      color: #4a6cf7;
       margin-bottom: 15px;
     }
 
@@ -46,7 +52,7 @@
     }
 
     .message-box {
-      background: #fff5f7;
+      background: #f3f7ff;
       padding: 15px;
       border-radius: 12px;
       margin: 15px 0;
@@ -58,27 +64,28 @@
     }
 
     button {
-      background: #ff5f7e;
+      background: #4a6cf7;
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 25px;
+      padding: 10px 18px;
+      border-radius: 20px;
       cursor: pointer;
-      font-size: 15px;
+      font-size: 14px;
       margin: 5px;
       transition: 0.3s;
     }
 
     button:hover {
-      background: #e94b69;
+      background: #3a5be0;
     }
 
     .download {
       display: inline-block;
-      margin-top: 10px;
+      margin-top: 8px;
       text-decoration: none;
-      color: #ff5f7e;
+      color: #4a6cf7;
       font-weight: bold;
+      font-size: 13px;
     }
 
     footer {
@@ -92,9 +99,10 @@
 
   <div class="container">
 
-    <h1>🎉 Hayal'e Özel 🎉</h1>
+    <h1>🌟 Hayal'e Özel 🌟</h1>
+
     <div class="date" id="today"></div>
-    <div class="date" id="countdown">Yeni güne kalan süre: --:--:--</div>
+    <div class="countdown" id="countdown"></div>
 
     <!-- Kedi GIF -->
     <img
@@ -106,7 +114,7 @@
 
     <!-- Mesaj Alanı -->
     <div class="message-box" id="message">
-      Bugünün mesajını görmek için tıkla 💖
+      Bugünün güzel mesajını görmek için tıkla 😊
     </div>
 
     <!-- Butonlar -->
@@ -120,18 +128,19 @@
       class="download"
       id="downloadLink"
     >
-      📥 Kedi GIF İndir
+      📥 GIF'i İndir
     </a>
 
     <footer>
-      Her gün senin için bir gülümseme 💕
+      Küçük bir tebessüm için hazırlandı ✨
     </footer>
 
   </div>
 
 
   <script>
-    // Tarih Göster
+
+    // Tarih
     const today = new Date();
     document.getElementById("today").innerText =
       today.toLocaleDateString("tr-TR", {
@@ -141,90 +150,70 @@
         day: "numeric",
       });
 
+
     // Yeni Gün Geri Sayım
     function updateCountdown() {
       const now = new Date();
       const tomorrow = new Date();
-
-      tomorrow.setHours(24, 0, 0, 0); // Gece 00:00
+      tomorrow.setHours(24, 0, 0, 0);
 
       const diff = tomorrow - now;
 
-      const hours = Math.floor(diff / (1000 * 60 * 60));
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
 
       document.getElementById("countdown").innerText =
-        `Yeni güne kalan süre: ${hours.toString().padStart(2, "0")}:${minutes
+        `Yeni güne kalan süre: ${h.toString().padStart(2,"0")}:${m
           .toString()
-          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+          .padStart(2,"0")}:${s.toString().padStart(2,"0")}`;
     }
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
-    document.getElementById("today").innerText =
-      today.toLocaleDateString("tr-TR", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
 
 
-    // Günlük Mesajlar
+    // Nazik ve Samimi Mesajlar (İlan-ı aşk yok)
     const messages = [
-      "İyi ki varsın Hayal 💖",
-      "Bugün de çok güzelsin 🌸",
-      "Gülüşün dünyayı aydınlatıyor ✨",
-      "Sen benim en güzel sürprizimsin 🎁",
-      "Hep mutlu ol, ben yanındayım 💕",
-      "Birlikte daha nice güzel günlere 🥰",
-      "Bugün de seni düşünmeden geçmedi 💫",
-      "Kalbimin en güzel yerindesin 💘",
-      "Gözlerin yıldız gibi parlıyor ⭐",
-      "Seni çok seviyorum Hayal ❤️",
-      "Sen gülünce dünya duruyor 😊",
-      "Kalbimin en güzel sebebisin 💞",
-      "Her gün seni seçerim 💍",
-      "İyi ki benim hayatımdasın 🌹",
-      "Varlığın bana güç veriyor 💪❤️",
-      "Sen benim mucizemsin ✨",
-      "Adını duyunca bile mutlu oluyorum 💓",
-      "Kalbim sana emanet 🔐",
-      "Sensiz bir gün eksik 🌙",
-      "Hayalim sensin 💭💖",
-      "Birlikte yaşlanalım 👵👴❤️",
-      "Gülüşün evim gibi 🏡",
-      "Sen benim en güzel şansım 🍀",
-      "Kalbim sana ait 💘",
-      "Seni sevmek en güzel alışkanlık 💝"
+      "Gülüşün gerçekten çok güzel 😊",
+      "Bugün de enerjin çok iyi görünüyor ✨",
+      "Pozitifliğin etrafına yayılıyor 🌼",
+      "Her ortamı güzelleştiriyorsun 🌟",
+      "Çok düşünceli bir insansın 💭",
+      "Yanındayken insan rahat hissediyor 🤍",
+      "Tarzın gerçekten çok hoş 😎",
+      "Güzel bir kalbin olduğu belli 💫",
+      "Konuşman insana iyi geliyor 🎧",
+      "Her gün biraz daha parlıyorsun ✨",
+      "Güven veren bir duruşun var 💪",
+      "İnsan seni görünce mutlu oluyor 😊",
+      "Doğallığın çok güzel 🌿",
+      "Çevrene hep iyi enerji veriyorsun 🌈",
+      "Her zaman nazik davranıyorsun 🤝",
+      "Güzel düşüncelerin var 💡",
+      "Samimiyetin çok değerli 💎",
+      "Kendin olman yeterince özel 🌟",
+      "Güler yüzün her şeyi değiştiriyor 😄",
+      "İyi bir insansın, belli oluyor 🤍"
     ];
 
 
     // Kedi GIF Listesi
     const gifs = [
       "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
-      "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
       "https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif",
       "https://media.giphy.com/media/lJNoBCvQYp7nq/giphy.gif",
-      "https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif",
       "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
       "https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif",
       "https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif",
       "https://media.giphy.com/media/6uMqzcbWRhoT6/giphy.gif",
       "https://media.giphy.com/media/LHZyixOnHwDDy/giphy.gif",
-      "https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif",
-      "https://media.giphy.com/media/12PA1eI8FBqEBa/giphy.gif",
-      "https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif",
-      "https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif",
-      "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
       "https://media.giphy.com/media/5i7umUqAOYYEw/giphy.gif",
-      "https://media.giphy.com/media/10dU7AN7xsi1I4/giphy.gif",
-      "https://media.giphy.com/media/8vQSQ3cNXuDGo/giphy.gif"
+      "https://media.giphy.com/media/10dU7AN7xsi1I4/giphy.gif"
     ];
 
 
-    // Günlük Mesaj Göster
+    // Mesaj Göster
     function showMessage() {
       const day = new Date().getDate();
       const index = day % messages.length;
@@ -244,12 +233,8 @@
       img.src = gif;
       link.href = gif;
     }
-       else {
-        music.pause();
-      }
-    }
 
-</script>
+  </script>
 
 </body>
 </html>
