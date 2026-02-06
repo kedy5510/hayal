@@ -94,6 +94,7 @@
 
     <h1>🎉 Hayal'e Özel 🎉</h1>
     <div class="date" id="today"></div>
+    <div class="date" id="countdown">Yeni güne kalan süre: --:--:--</div>
 
     <!-- Kedi GIF -->
     <img
@@ -122,6 +123,14 @@
       📥 Kedi GIF İndir
     </a>
 
+    <!-- Arka Plan Müzik -->
+    <audio id="bgMusic" loop autoplay>
+      <source src="https://files.catbox.moe/6h9y8k.mp3" type="audio/mpeg">
+      Tarayıcın müziği desteklemiyor.
+    </audio>
+
+    <button onclick="toggleMusic()">🎵 Müziği Aç / Kapat</button>
+
     <footer>
       Her gün senin için bir gülümseme 💕
     </footer>
@@ -140,51 +149,79 @@
         day: "numeric",
       });
 
+    // Yeni Gün Geri Sayım
+    function updateCountdown() {
+      const now = new Date();
+      const tomorrow = new Date();
+
+      tomorrow.setHours(24, 0, 0, 0); // Gece 00:00
+
+      const diff = tomorrow - now;
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerText =
+        `Yeni güne kalan süre: ${hours.toString().padStart(2, "0")}:${minutes
+          .toString()
+          .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    document.getElementById("today").innerText =
+      today.toLocaleDateString("tr-TR", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
 
     // Günlük Mesajlar
     const messages = [
-"İyi ki varsın Hayal 💖",
-"Bugün de çok güzelsin 🌸",
-"Gülüşün dünyayı aydınlatıyor ✨",
-"Sen benim en güzel sürprizimsin 🎁",
-"Hep mutlu ol, ben yanındayım 💕",
-"Birlikte daha nice güzel günlere 🥰",
-"Gözlerin yıldız gibi parlıyor ⭐",
-"Seni çok seviyorum Hayal ❤️",
-"Sen gülünce dünya duruyor 😊",
-"Kalbimin en güzel sebebisin 💞",
-"İyi ki benim hayatımdasın 🌹",
-"Varlığın bana güç veriyor 💪❤️",
-"Sensiz bir gün eksik 🌙",
-"Hayalim sensin 💭💖",
-"Birlikte yaşlanalım 👵👴❤️",
-"Gülüşün evim gibi 🏡",
-"Sen benim en güzel şansım 🍀",
-"Kalbim sana ait 💘",
-"Seni sevmek en güzel alışkanlık 💝"
+      "İyi ki varsın Hayal 💖",
+      "Bugün de çok güzelsin 🌸",
+      "Gülüşün dünyayı aydınlatıyor ✨",
+      "Sen benim en güzel sürprizimsin 🎁",
+      "Hep mutlu ol, ben yanındayım 💕",
+      "Birlikte daha nice güzel günlere 🥰",
+      "Bugün de seni düşünmeden geçmedi 💫",
+      "Kalbimin en güzel yerindesin 💘",
+      "Gözlerin yıldız gibi parlıyor ⭐",
+      "Gülüşün sıcacık 😊",
+      "Her gün seni seçerim 💍",
+      "İyi ki benim hayatımdasın 🌹",
+      "Varlığın bana güç veriyor 💪❤️",
+      "Adını duyunca bile mutlu oluyorum 💓",
+      "Kalbim sana emanet 🔐",
+      "Sensiz bir gün eksik 🌙",
+      "Hayalim sensin 💭💖",
+      "Sen benim en güzel şansım 🍀",
     ];
 
 
     // Kedi GIF Listesi
     const gifs = [
-"https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
-"https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
-"https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif",
-"https://media.giphy.com/media/lJNoBCvQYp7nq/giphy.gif",
-"https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif",
-"https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
-"https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif",
-"https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif",
-"https://media.giphy.com/media/6uMqzcbWRhoT6/giphy.gif",
-"https://media.giphy.com/media/LHZyixOnHwDDy/giphy.gif",
-"https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif",
-"https://media.giphy.com/media/12PA1eI8FBqEBa/giphy.gif",
-"https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif",
-"https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif",
-"https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
-"https://media.giphy.com/media/5i7umUqAOYYEw/giphy.gif",
-"https://media.giphy.com/media/10dU7AN7xsi1I4/giphy.gif",
-"https://media.giphy.com/media/8vQSQ3cNXuDGo/giphy.gif"
+      "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
+      "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+      "https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif",
+      "https://media.giphy.com/media/lJNoBCvQYp7nq/giphy.gif",
+      "https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif",
+      "https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif",
+      "https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif",
+      "https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif",
+      "https://media.giphy.com/media/6uMqzcbWRhoT6/giphy.gif",
+      "https://media.giphy.com/media/LHZyixOnHwDDy/giphy.gif",
+      "https://media.giphy.com/media/BzyTuYCmvSORqs1ABM/giphy.gif",
+      "https://media.giphy.com/media/12PA1eI8FBqEBa/giphy.gif",
+      "https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif",
+      "https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif",
+      "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif",
+      "https://media.giphy.com/media/5i7umUqAOYYEw/giphy.gif",
+      "https://media.giphy.com/media/10dU7AN7xsi1I4/giphy.gif",
+      "https://media.giphy.com/media/8vQSQ3cNXuDGo/giphy.gif"
     ];
 
 
@@ -208,9 +245,18 @@
       img.src = gif;
       link.href = gif;
     }
-  </script>
+      // Müzik Kontrol
+    const music = document.getElementById("bgMusic");
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+
+</script>
 
 </body>
 </html>
-
-
