@@ -123,14 +123,6 @@
       📥 Kedi GIF İndir
     </a>
 
-    <!-- Arka Plan Müzik -->
-    <audio id="bgMusic" loop autoplay>
-      <source src="https://files.catbox.moe/6h9y8k.mp3" type="audio/mpeg">
-      Tarayıcın müziği desteklemiyor.
-    </audio>
-
-    <button onclick="toggleMusic()">🎵 Müziği Aç / Kapat</button>
-
     <footer>
       Her gün senin için bir gülümseme 💕
     </footer>
@@ -190,15 +182,22 @@
       "Bugün de seni düşünmeden geçmedi 💫",
       "Kalbimin en güzel yerindesin 💘",
       "Gözlerin yıldız gibi parlıyor ⭐",
-      "Gülüşün sıcacık 😊",
+      "Seni çok seviyorum Hayal ❤️",
+      "Sen gülünce dünya duruyor 😊",
+      "Kalbimin en güzel sebebisin 💞",
       "Her gün seni seçerim 💍",
       "İyi ki benim hayatımdasın 🌹",
       "Varlığın bana güç veriyor 💪❤️",
+      "Sen benim mucizemsin ✨",
       "Adını duyunca bile mutlu oluyorum 💓",
       "Kalbim sana emanet 🔐",
       "Sensiz bir gün eksik 🌙",
       "Hayalim sensin 💭💖",
+      "Birlikte yaşlanalım 👵👴❤️",
+      "Gülüşün evim gibi 🏡",
       "Sen benim en güzel şansım 🍀",
+      "Kalbim sana ait 💘",
+      "Seni sevmek en güzel alışkanlık 💝"
     ];
 
 
@@ -245,13 +244,7 @@
       img.src = gif;
       link.href = gif;
     }
-      // Müzik Kontrol
-    const music = document.getElementById("bgMusic");
-
-    function toggleMusic() {
-      if (music.paused) {
-        music.play();
-      } else {
+       else {
         music.pause();
       }
     }
